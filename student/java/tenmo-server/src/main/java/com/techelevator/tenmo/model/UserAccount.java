@@ -2,6 +2,8 @@ package com.techelevator.tenmo.model;
 
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserAccount {
 
@@ -20,6 +22,8 @@ public class UserAccount {
 
     public UserAccount() {
     }
+
+    public static List<UserAccount> userAccounts = new ArrayList<>();
 
     public Long getId() {
         return id;

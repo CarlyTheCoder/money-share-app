@@ -16,25 +16,25 @@ public class JdbcUserAccountDao implements UserAccountDao{
     }
 
     @Override
-    public UserAccount getAccountBalance(Long userId) {
+    public BigDecimal getAccountBalance(Long userId) {
         BigDecimal balance = null;
-        String sql = "SELECT * FROM accounts WHERE accounts.account_id = ?;";
+        String sql = "SELECT * FROM accounts WHERE accounts.user_id = ?;";
         SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, userId);
         if (rows.next()){
-            balance = mapRowToUserAccount(rows);
+            balance = rows.getBigDecimal("balance");
         }
         return balance;
     }
 
-    @Override
-    public UserAccount addToBalance() {
+    /*@Override
+    public BigDecimal addToBalance() {
         return null;
-    }
+    }*/
 
-    @Override
-    public UserAccount transferBalance() {
+    /*@Override
+    public BigDecimal transferBalance() {
         return null;
-    }
+    }*/
 
     private UserAccount mapRowToUserAccount(SqlRowSet rs) {
         UserAccount userAccount = new UserAccount();

@@ -29,22 +29,20 @@ public class JdbcTransferDao implements TransferDao {
     }
 
     @Override
-    public Transfer createTransfer(Transfer transfer) {
+    public Transfer createTransfer(Transfer transfer) {return null;}
+
+    @Override
+    public String getStatus(String status) {
         return null;
     }
 
     @Override
-    public Transfer getStatus(String status) {
+    public Boolean checkApproval(boolean isRequestApproved) {
         return null;
     }
 
     @Override
-    public Transfer checkApproval(boolean isRequestApproved) {
-        return null;
-    }
-
-    @Override
-    public Transfer selectUser(String toUsername) {
+    public String selectUser(String toUsername) {
         return null;
     }
 

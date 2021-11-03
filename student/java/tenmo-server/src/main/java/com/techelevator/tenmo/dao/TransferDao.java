@@ -14,11 +14,11 @@ public interface TransferDao {
 
     Transfer createTransfer(Transfer transfer);
 
-    Transfer getStatus(String status);
+    String getStatus(String status);
 
-    Transfer checkApproval(boolean isRequestApproved);
+    Boolean checkApproval(boolean isRequestApproved);
 
-    Transfer selectUser(String toUsername);
+    String selectUser(String toUsername);
 
     Transfer approveTransfer(boolean isRequestApproved, String username);
 
