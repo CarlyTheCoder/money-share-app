@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserAccount {
+public class Account {
 
     @NotEmpty
     private Long id;
@@ -14,16 +14,16 @@ public class UserAccount {
 
     private BigDecimal balance;
 
-    public UserAccount(Long id, Long userId, BigDecimal balance) {
+    public Account(Long id, Long userId, BigDecimal balance) {
         this.id = id;
         this.userId = userId;
         this.balance = balance;
     }
 
-    public UserAccount() {
+    public Account() {
     }
 
-    public static List<UserAccount> userAccounts = new ArrayList<>();
+    public static List<Account> accounts = new ArrayList<>();
 
     public Long getId() {
         return id;

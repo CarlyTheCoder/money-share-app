@@ -1,4 +1,4 @@
 package com.techelevator.tenmo.controller;
 
-public class TransferController {
+public class UserController {
 }
