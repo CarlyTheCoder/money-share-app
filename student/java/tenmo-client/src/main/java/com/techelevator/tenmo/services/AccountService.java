@@ -9,6 +9,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.math.BigDecimal;
+
 
 public class AccountService {
     private String API_BASE_URL;
@@ -19,14 +21,26 @@ public class AccountService {
        this.API_BASE_URL = API_BASE_URL;
     }
 
-    public Account getAccount() throws AccountServiceException {
-       if (this.user == null) {
-           throw new AccountServiceException ("No logged in user");
-       }
-       String path = this.API_BASE_URL + "account/user/" + user.getUser().getId();
-        ResponseEntity<Account> response = restTemplate.exchange(path, HttpMethod.GET, makeAuthEntity(), Account.class);
-        return response.getBody();
+    public User getUserFromAccountId(int accountId) {
+        User retrievedUser = restTemplate.exchange(API_BASE_URL + "users/account/" +
+                accountId, HttpMethod.GET, makeAuthEntity(), User.class).getBody();
+        return retrievedUser;
     }
+
+
+    //get balance w/big decimal, call from service in main
+
+
+
+  //  public Account getAccount() throws AccountServiceException {
+
+      // if (this.user == null) {
+      //     throw new AccountServiceException ("No logged in user");
+      // }
+      // String path = this.API_BASE_URL + "account/user/" + user.getUser().getId();
+       // ResponseEntity<Account> response = restTemplate.exchange(path, HttpMethod.GET, makeAuthEntity(), Account.class);
+       // return response.getBody();
+    //}
 
     private HttpEntity<Void> makeAuthEntity() {
         HttpHeaders headers = new HttpHeaders();

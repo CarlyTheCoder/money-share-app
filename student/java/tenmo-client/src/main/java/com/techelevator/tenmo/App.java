@@ -84,7 +84,7 @@ private static final String API_BASE_URL = "http://localhost:8080/";
 			return;
 		}
 		try {
-			Account account = accountService.getAccount();
+			User user = accountService.getUserFromAccountId();
 			System.out.format("Current balance is $%s%r",
 					NumberFormat.getCurrencyInstance().format(account.getBalance()));
 		} catch (AccountServiceException e) {
@@ -104,6 +104,7 @@ private static final String API_BASE_URL = "http://localhost:8080/";
 
 	private void sendBucks() {
 		// TODO Auto-generated method stub
+
 		
 	}
 
