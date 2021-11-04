@@ -4,71 +4,68 @@ import java.math.BigDecimal;
 
 public class Transfer {
 
-    private Long transferId;
-    private String username;
-    private Long userId;
-    private String status;
-    private boolean isRequestApproved = false;
-    private BigDecimal transferAmount;
+    private int transferId;
+    private int transferTypeId;
+    private int transferStatusId;
+    private int accountTo;
+    private int accountFrom;
+    private BigDecimal amount;
 
-    public Transfer(Long transferId, String username, Long userId,
-                    String status, boolean isRequestApproved, BigDecimal transferAmount) {
+
+    public Transfer(int transferId, int transferTypeId, int transferStatusId, int accountTo, int accountFrom, BigDecimal amount) {
         this.transferId = transferId;
-        this.username = username;
-        this.userId = userId;
-        this.status = status;
-        this.isRequestApproved = isRequestApproved;
-        this.transferAmount = transferAmount;
+        this.transferTypeId = transferTypeId;
+        this.transferStatusId = transferStatusId;
+        this.accountTo = accountTo;
+        this.accountFrom = accountFrom;
+        this.amount = amount;
     }
 
-    public Transfer() {
-    }
-
-    public Long getTransferId() {
+    public int getTransferId() {
         return transferId;
     }
 
-    public void setTransferId(Long transferId) {
+    public void setTransferId(int transferId) {
         this.transferId = transferId;
     }
 
-    public String getUsername() {
-        return username;
+    public int getTransferTypeId() {
+        return transferTypeId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setTransferTypeId(int transferTypeId) {
+        this.transferTypeId = transferTypeId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public int getTransferStatusId() {
+        return transferStatusId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setTransferStatusId(int transferStatusId) {
+        this.transferStatusId = transferStatusId;
     }
 
-    public String getStatus() {
-        return status;
+    public int getAccountTo() {
+        return accountTo;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setAccountTo(int accountTo) {
+        this.accountTo = accountTo;
     }
 
-    public boolean isRequestApproved() {
-        return isRequestApproved;
+    public int getAccountFrom() {
+        return accountFrom;
     }
 
-    public void setRequestApproved(boolean requestApproved) {
-        isRequestApproved = requestApproved;
+    public void setAccountFrom(int accountFrom) {
+        this.accountFrom = accountFrom;
     }
 
-    public BigDecimal getTransferAmount() {
-        return transferAmount;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setTransferAmount(BigDecimal transferAmount) {
-        this.transferAmount = transferAmount;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 }

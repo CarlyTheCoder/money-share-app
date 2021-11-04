@@ -1,9 +1,13 @@
 package com.techelevator.tenmo.controller;
 
+import com.techelevator.tenmo.dao.JdbcTransferDao;
 import com.techelevator.tenmo.dao.TransferDao;
 import com.techelevator.tenmo.dao.AccountDao;
 import com.techelevator.tenmo.dao.UserDao;
+import com.techelevator.tenmo.model.Account;
+import com.techelevator.tenmo.model.Transfer;
 import com.techelevator.tenmo.model.User;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,5 +37,12 @@ public class AccountController {
     public BigDecimal getAccountBalance(Principal principal) {
         Long userId = userDao.findByUsername(principal.getName()).getId();
         return accountDao.getAccountBalance(userId);
+    }
+
+    @RequestMapping (path = "/transfer", method = RequestMethod.POST)
+    public void sendTransfer(@RequestBody Transfer transfer) {
+        transferDao.sendTransfer(transfer);
+        Account accountFrom = new Account();
+        JdbcTransferDao.updateBalance(transfer.getAccountFrom(), accountFrom.getBalance().subtract(transfer.getAmount()));
     }
 }
