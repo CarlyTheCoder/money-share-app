@@ -8,13 +8,13 @@ import java.util.List;
 public class Account {
 
     @NotEmpty
-    private Long id;
+    private Integer id;
     @NotEmpty
-    private Long userId;
+    private Integer userId;
 
     private BigDecimal balance;
 
-    public Account(Long id, Long userId, BigDecimal balance) {
+    public Account(Integer id, Integer userId, BigDecimal balance) {
         this.id = id;
         this.userId = userId;
         this.balance = balance;
@@ -25,19 +25,19 @@ public class Account {
 
     public static List<Account> accounts = new ArrayList<>();
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

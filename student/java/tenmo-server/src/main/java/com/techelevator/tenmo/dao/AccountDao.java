@@ -6,9 +6,11 @@ import java.math.BigDecimal;
 
 public interface AccountDao {
 
-    BigDecimal getAccountBalance(Long userId);
+    BigDecimal getAccountBalance(int userId);
 
-    Long getAccountByUserId(Long userId);
+    Integer getAccountByUserId(int userId);
+
+
     //get account by userId
 
     /*BigDecimal addToBalance();

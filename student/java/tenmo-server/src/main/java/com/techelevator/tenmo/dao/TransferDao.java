@@ -11,9 +11,14 @@ public interface TransferDao {
 
     void updateBalance (int userId, BigDecimal newBalance);
 
+
     List<Transfer> getAllTransfers(Long userId);
 
     List<Transfer> getAllPendingTransfers(Long userId);
+
+    List<Transfer> getTransferActivityHistory(Long transferId);
+
+    Transfer getTransferDetails(int transferId);
 
    // Transfer createTransfer(Transfer transfer);
 
