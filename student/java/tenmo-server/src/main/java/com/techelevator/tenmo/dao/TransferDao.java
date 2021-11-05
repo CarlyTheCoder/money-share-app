@@ -2,11 +2,14 @@ package com.techelevator.tenmo.dao;
 
 import com.techelevator.tenmo.model.Transfer;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface TransferDao {
 
     void sendTransfer(Transfer transfer);
+
+    void updateBalance (int userId, BigDecimal newBalance);
 
     List<Transfer> getAllTransfers(Long userId);
 
@@ -21,5 +24,9 @@ public interface TransferDao {
     String selectUser(String toUsername);
 
     Transfer approveTransfer(boolean isRequestApproved, String username);
+
+    long getAccountTo();
+
+    long getAccountFrom();
 
 }

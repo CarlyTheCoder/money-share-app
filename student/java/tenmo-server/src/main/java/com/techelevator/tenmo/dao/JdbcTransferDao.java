@@ -67,4 +67,14 @@ public class JdbcTransferDao implements TransferDao {
     public Transfer approveTransfer(boolean isRequestApproved, String username) {
         return null;
     }
+
+    @Override
+    public long getAccountTo() {
+        return 0;
+    }
+
+    @Override
+    public long getAccountFrom() {
+        return 0;
+    }
 }

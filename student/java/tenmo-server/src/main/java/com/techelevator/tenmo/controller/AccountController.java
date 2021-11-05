@@ -42,7 +42,11 @@ public class AccountController {
     @RequestMapping (path = "/transfer", method = RequestMethod.POST)
     public void sendTransfer(@RequestBody Transfer transfer) {
         transferDao.sendTransfer(transfer);
-        Account accountFrom = new Account();
-        JdbcTransferDao.updateBalance(transfer.getAccountFrom(), accountFrom.getBalance().subtract(transfer.getAmount()));
+        accountDao.getAccountByUserId(transfer.getAccountFrom());
+        //look up accountfrom from the details in the transfer
+        transferDao.updateBalance((int) transfer.getAccountFrom(), accountDao.getAccountBalance(accountDao.getAccountByUserId(transfer.getAccountFrom())).subtract(transfer.getAmount()));
+
+        accountDao.getAccountByUserId(transfer.getAccountTo());
+        transferDao.updateBalance((int) transfer.getAccountTo(), accountDao.getAccountBalance(accountDao.getAccountByUserId(transfer.getAccountTo())).add(transfer.getAmount()));
     }
 }
