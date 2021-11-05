@@ -21,12 +21,18 @@ public class AccountService {
        this.API_BASE_URL = API_BASE_URL;
     }
 
-    public User getUserFromAccountId(int accountId) {
-        User retrievedUser = restTemplate.exchange(API_BASE_URL + "users/account/" +
+
+    //add on the server side first
+    /*public Account getUserFromAccountId(int accountId) {
+        User retrievedUser = restTemplate.exchange(API_BASE_URL + "users/account" +
                 accountId, HttpMethod.GET, makeAuthEntity(), User.class).getBody();
         return retrievedUser;
-    }
+    }*/
 
+    public BigDecimal getBalance() {
+        BigDecimal retrievedUser = restTemplate.exchange(API_BASE_URL + "account/balance", HttpMethod.GET, makeAuthEntity(), BigDecimal.class).getBody();
+        return retrievedUser;
+    }
 
     //get balance w/big decimal, call from service in main
 

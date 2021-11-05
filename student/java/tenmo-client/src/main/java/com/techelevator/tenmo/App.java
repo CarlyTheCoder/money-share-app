@@ -84,10 +84,9 @@ private static final String API_BASE_URL = "http://localhost:8080/";
 			return;
 		}
 		try {
-			User user = accountService.getUserFromAccountId();
 			System.out.format("Current balance is $%s%r",
-					NumberFormat.getCurrencyInstance().format(account.getBalance()));
-		} catch (AccountServiceException e) {
+					NumberFormat.getCurrencyInstance().format(accountService.getBalance()));
+		} catch (Exception e) {
 			System.out.println("Sorry, account not found. Please log in to your account. \tヽ( `д´*)ノ");
 		}
 	}
