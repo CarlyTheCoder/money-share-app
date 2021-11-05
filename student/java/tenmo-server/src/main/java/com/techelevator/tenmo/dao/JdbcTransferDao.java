@@ -21,9 +21,10 @@ public class JdbcTransferDao implements TransferDao {
     @Override
     public void sendTransfer(Transfer transfer) {
         jdbcTemplate.execute("BEGIN TRANSACTION");
+
         String sql = "INSERT INTO transfers (transfer_id, transfer_type_id, transfer_status_id, account_from, account_to, amount) " +
-                "VALUES (DEFAULT, ?, 1, ?, ?, ?;)";
-        jdbcTemplate.update(sql, transfer.getTransferId(), transfer.getTransferTypeId(), transfer.getTransferStatusId(),
+                "VALUES (DEFAULT, ?, ?, ?, ?, ?);";
+        jdbcTemplate.update(sql, transfer.getTransferTypeId(), transfer.getTransferStatusId(),
                 transfer.getAccountFrom(), transfer.getAccountTo(), transfer.getAmount());
     }
 
