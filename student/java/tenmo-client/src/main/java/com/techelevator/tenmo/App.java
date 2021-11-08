@@ -11,6 +11,7 @@ import com.techelevator.tenmo.services.AuthenticationServiceException;
 import com.techelevator.view.ConsoleService;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.text.NumberFormat;
 
 public class App {
@@ -79,7 +80,18 @@ private static final String API_BASE_URL = "http://localhost:8080/";
 
 	private void viewCurrentBalance() {
 		// TODO Auto-generated method stub
-		if(currentUser == null) {
+		accountService.getBalance(currentUser.getToken);
+		System.out.println("To go to the Main Menu - Press Enter");
+		try {
+			System.in.read();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Please make a selection.");
+		}
+
+
+		/*if(currentUser == null) {
 			System.out.println("Please log in to view your balance (；⌣̀_⌣́)");
 			return;
 		}
@@ -88,8 +100,7 @@ private static final String API_BASE_URL = "http://localhost:8080/";
 					NumberFormat.getCurrencyInstance().format(accountService.getBalance()));
 		} catch (Exception e) {
 			System.out.println("Sorry, account not found. Please log in to your account. \tヽ( `д´*)ノ");
-		}
-	}
+		}*/
 
 	private void viewTransferHistory() {
 		// TODO Auto-generated method stub

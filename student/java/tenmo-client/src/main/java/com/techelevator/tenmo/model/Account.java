@@ -26,7 +26,7 @@ public class Account {
         this.userId = userId;
     }
 
-    public BigDecimal getBalance() {
+    public BigDecimal getBalance(String token) {
         return balance;
     }
 

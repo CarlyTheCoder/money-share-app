@@ -29,9 +29,17 @@ public class AccountService {
         return retrievedUser;
     }*/
 
-    public BigDecimal getBalance() {
-        BigDecimal retrievedUser = restTemplate.exchange(API_BASE_URL + "account/balance", HttpMethod.GET, makeAuthEntity(), BigDecimal.class).getBody();
-        return retrievedUser;
+    public void getBalance(String token) {
+        BigDecimal balance = null;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity<BigDecimal> entity = new HttpEntity<>(headers);
+        try {
+            balance = restTemplate.exchange(API_BASE_URL + "account/balance", HttpMethod.GET, entity, BigDecimal.class).getBody();
+            System.out.println("Balance is: " + balance);
+        } catch (Exception e) {
+            System.out.println("Unable to get balance.");
+        }
     }
 
     //get balance w/big decimal, call from service in main
