@@ -41,6 +41,11 @@ public class TenmoAccountController {
         Integer userId = userDao.findByUsername(principal.getName()).getId();
         return accountDao.getAccountBalance(userId);
     }
+    /*TODO
+    -
+    - can't send more TE bucks than I have in my account: try/catch or if statement balance is > request amount
+    - sending transfer has initial status of "approve": in JdbcTransferDao getStatus --> 2 and statusApproval --> true
+     */
 
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping (path = "/transfer", method = RequestMethod.POST)
