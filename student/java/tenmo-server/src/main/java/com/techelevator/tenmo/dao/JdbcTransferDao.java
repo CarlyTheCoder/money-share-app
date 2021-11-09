@@ -20,6 +20,8 @@ public class JdbcTransferDao implements TransferDao {
 
     }
 
+    //methods and sql below used in tenmo controller
+
     @Override
     public void sendTransfer(Transfer transfer) {
         jdbcTemplate.execute("BEGIN TRANSACTION");

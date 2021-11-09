@@ -31,11 +31,15 @@ public class TenmoAccountController {
 
 
 
+    //READ_ME 4-1, choose from list of users to send TE bucks to
+        //look in JDBC user DAO
     @RequestMapping (path = "/username", method = RequestMethod.GET)
     public List<User> listOfUsernames() {
         return userDao.listOfUsernames();
     }
 
+
+    //READ_ME 3, See account balance as authenticated TE user
     @RequestMapping (path = "/balance", method = RequestMethod.GET)
     public BigDecimal getAccountBalance(Principal principal) {
         Integer userId = userDao.findByUsername(principal.getName()).getId();
@@ -47,6 +51,7 @@ public class TenmoAccountController {
     - sending transfer has initial status of "approve": in JdbcTransferDao getStatus --> 2 and statusApproval --> true
      */
 
+    //READ_ME Transfer $ to selected user, sender's balance decreases, receiver's increases, initial status APPROVED
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping (path = "/transfer", method = RequestMethod.POST)
     public void sendTransfer(@RequestBody Transfer transfer) {
@@ -64,11 +69,12 @@ public class TenmoAccountController {
         transferDao.updateBalance(userToId, moneyFrom);
     }
 
+    // READ_ME 5, see transfers I have sent or received
     @RequestMapping (path = "/transfer/history/{userId}", method = RequestMethod.GET)
     public List<Transfer> getTransferActivityHistory(@PathVariable Long userId){
         return transferDao.getTransferActivityHistory(userId);
     }
-
+    //READ_ME 6, retieve details of any tranfer based on transfer ID
     @RequestMapping (path = "/transfer/{transferId}", method = RequestMethod.GET)
     public Transfer getTransferDetails (@PathVariable int transferId){
         return transferDao.getTransferDetails(transferId);

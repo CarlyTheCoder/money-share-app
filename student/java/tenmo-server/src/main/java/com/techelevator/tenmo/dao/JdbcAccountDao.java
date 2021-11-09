@@ -15,6 +15,8 @@ public class JdbcAccountDao implements AccountDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+
+    //both of these methods & SQL are used in Atenmo controller with getting balance and doing transfer
     @Override
     public BigDecimal getAccountBalance(int userId) {
         BigDecimal balance = null;

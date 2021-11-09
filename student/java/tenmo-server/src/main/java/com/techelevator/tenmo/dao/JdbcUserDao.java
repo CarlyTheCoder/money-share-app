@@ -45,6 +45,8 @@ public class JdbcUserDao implements UserDao {
         return users;
     }
 
+
+    //finds list of users in Tenmo controller
     @Override
     public List<User> listOfUsernames() {
         List<User> userList = new ArrayList<>();
